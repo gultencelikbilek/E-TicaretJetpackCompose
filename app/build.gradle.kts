@@ -69,6 +69,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    //coil
+   // implementation (libs.accompanist.coil)
+    implementation(libs.coil.compose)
     //Hilt
     implementation (libs.hilt.android)
     kapt (libs.hilt.compiler)

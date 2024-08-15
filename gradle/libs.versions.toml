@@ -1,4 +1,5 @@
 [versions]
+accompanistCoil = "2.1.0"
 agp = "8.4.0"
 converterGson = "2.9.0"
 coreSplashscreen = "1.0.1"
@@ -17,8 +18,10 @@ animationGraphics = "1.6.8"
 kotlinxCoroutinesCore = "1.9.0-RC"
 kotlinxCoroutinesAndroid = "1.9.0-RC"
 retrofit = "2.9.0"
+coilCompose = "2.1.0"
 
 [libraries]
+accompanist-coil = { module = "com.google.accompanist:accompanist-coil", version.ref = "accompanistCoil" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
@@ -43,6 +46,7 @@ androidx-animation-graphics = { module = "androidx.compose.animation:animation-g
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 
 
 [plugins]
