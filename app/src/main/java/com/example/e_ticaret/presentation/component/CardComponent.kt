@@ -10,6 +10,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardElevation
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -17,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.e_ticaret.domain.model.ProductResponseItem
@@ -48,8 +50,20 @@ fun CardComponent(product: ProductResponseItem) {
                     .padding(start = 10.dp, end = 10.dp, top = 5.dp, bottom = 50.dp)
                     .align(Alignment.CenterHorizontally)
             )
+            Text(
+                text = product.name,
+                style = TextStyle(
+                    fontSize = MaterialTheme.typography.labelSmall.fontSize,
+                    color = Color.Gray
+                )
+            )
+            Text(
+                text = product.price,
+                style = TextStyle(
+                    fontSize = MaterialTheme.typography.labelSmall.fontSize,
+                    color = Color.Gray
+                )
+            )
         }
     }
-
-
 }
