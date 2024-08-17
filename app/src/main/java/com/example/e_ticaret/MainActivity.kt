@@ -1,5 +1,6 @@
 package com.example.e_ticaret
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -25,6 +26,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.compose.rememberNavController
+import com.example.e_ticaret.navigation.AppBottomNav
+import com.example.e_ticaret.navigation.AppNavigation
+import com.example.e_ticaret.navigation.BottomNav
 import com.example.e_ticaret.presentation.product_screen.ProductScreen
 import com.example.e_ticaret.ui.theme.ETicaretTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,6 +38,7 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
@@ -53,12 +59,20 @@ class MainActivity : ComponentActivity() {
                 SplashContent()
             } else {
                 ETicaretTheme {
-                    Box(
-                        modifier = Modifier.fillMaxSize(),
-                        contentAlignment = Alignment.Center
+                    val navController = rememberNavController()
+                    Scaffold(
+                        bottomBar = {
+                            AppBottomNav(navController = navController)
+                        }
                     ) {
-                        ProductScreen()
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            AppNavigation(navController)
+                        }
                     }
+
                 }
             }
         }

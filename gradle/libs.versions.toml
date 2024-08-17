@@ -20,6 +20,7 @@ kotlinxCoroutinesAndroid = "1.9.0-RC"
 retrofit = "2.9.0"
 coilCompose = "2.1.0"
 roomRuntime = "2.6.1"
+material = "1.6.6"
 
 
 [libraries]
@@ -52,6 +53,7 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose"
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
 androidx-room-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+androidx-material = { module = "androidx.compose.material:material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

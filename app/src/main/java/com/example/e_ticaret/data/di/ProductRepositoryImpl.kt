@@ -4,6 +4,7 @@ import com.example.e_ticaret.data.network.NetworkResult
 import com.example.e_ticaret.data.network.ProductService
 import com.example.e_ticaret.domain.model.ProductResponseItem
 import com.example.e_ticaret.domain.repository.ProductRepository
+import retrofit2.Response
 import javax.inject.Inject
 
 

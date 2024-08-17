@@ -6,15 +6,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.e_ticaret.data.network.NetworkResult
+import com.example.e_ticaret.data.usecase.AddProductUseCase
 import com.example.e_ticaret.data.usecase.AllProductUseCase
 import com.example.e_ticaret.domain.model.ProductResponseItem
+import com.example.e_ticaret.domain.model.ProductResponseItemDb
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ProductViewModel @Inject constructor(
-    private val allProductUseCase: AllProductUseCase
+    private val allProductUseCase: AllProductUseCase,
+    private val addProductUseCase: AddProductUseCase
 ) : ViewModel() {
 
     private val _productState = mutableStateOf(ProductState())
@@ -48,7 +51,18 @@ class ProductViewModel @Inject constructor(
             }
         }
     }
+
+
+    fun addProductDb(productResponseItemDb: ProductResponseItemDb) = viewModelScope.launch {
+        addProductUseCase.invoke(productResponseItemDb)
+    }
 }
+
+data class ProductDbState(
+    val data : ProductResponseItem? = null,
+    val isError : String? ="",
+    val isLoading : Boolean? = false
+)
 
 data class ProductState(
     val data: NetworkResult<List<ProductResponseItem>>? = null,

@@ -47,7 +47,7 @@ fun ProductScreen(
                         modifier = Modifier.padding(it)
                     ) {
                         items(state.data.data) { product ->
-                            CardComponent(product)
+                            CardComponent(product,productViewModel)
                         }
                         Log.d("successscreen:", state.data.data.toString())
                     }
