@@ -94,4 +94,10 @@ dependencies {
 
     //splash screen
     implementation(libs.androidx.core.splashscreen)
+
+    //room
+    implementation (libs.androidx.room.runtime)
+    annotationProcessor (libs.androidx.room.room.compiler)
+    kapt (libs.androidx.room.room.compiler)
+    implementation (libs.androidx.room.ktx)
 }
