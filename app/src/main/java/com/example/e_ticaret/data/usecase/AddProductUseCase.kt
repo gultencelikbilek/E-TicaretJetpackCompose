@@ -6,5 +6,5 @@ import javax.inject.Inject
 
 class AddProductUseCase @Inject constructor(private val cartRepositoryImpl: CartRepositoryImpl) {
 
-    operator suspend fun invoke(productResponseItemDb: ProductResponseItemDb) = cartRepositoryImpl.addProduct(productResponseItemDb)
+    operator suspend fun invoke(productResponseItemDb: ProductResponseItemDb) = cartRepositoryImpl.addOrUpdateProduct(productResponseItemDb)
 }

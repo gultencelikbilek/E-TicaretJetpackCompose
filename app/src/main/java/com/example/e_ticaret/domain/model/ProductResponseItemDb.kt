@@ -5,9 +5,10 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class ProductResponseItemDb(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate =  true)
     val id : Int,
     val name: String,
     val price: String,
-    val url: String
+    val url: String,
+    var quantity: Int? = 1
 )

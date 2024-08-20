@@ -5,7 +5,7 @@ import androidx.room.Room
 import com.example.e_ticaret.data.Constants
 import com.example.e_ticaret.data.db.CartDatabase
 import com.example.e_ticaret.data.network.ProductService
-import com.example.e_ticaret.domain.repository.CartRespository
+import com.example.e_ticaret.domain.repository.CartRepository
 import com.example.e_ticaret.domain.repository.ProductRepository
 import dagger.Module
 import dagger.Provides
@@ -43,7 +43,7 @@ object AppModule {
     @Singleton
     fun providesCartImpl(
         @ApplicationContext context: Context
-    ) : CartRespository = CartRepositoryImpl(context)
+    ) : CartRepository = CartRepositoryImpl(context)
 
     @Provides
     @Singleton
