@@ -16,6 +16,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.e_ticaret.data.network.NetworkResult
 import com.example.e_ticaret.presentation.component.CardComponent
 import com.example.e_ticaret.presentation.component.Header
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -24,6 +29,7 @@ fun ProductScreen(
     productViewModel: ProductViewModel = hiltViewModel()
 ) {
     val state = productViewModel.productState.value
+
 
     when (state.data) {
         is NetworkResult.Error -> {
@@ -47,7 +53,7 @@ fun ProductScreen(
                         modifier = Modifier.padding(it)
                     ) {
                         items(state.data.data) { product ->
-                            CardComponent(product,productViewModel)
+                            CardComponent(product, productViewModel)
                         }
                         Log.d("successscreen:", state.data.data.toString())
                     }

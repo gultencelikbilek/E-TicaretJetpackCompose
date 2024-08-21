@@ -1,6 +1,7 @@
 package com.example.e_ticaret.data.db
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -20,4 +21,7 @@ interface CartDao {
 
     @Query("UPDATE productresponseitemdb SET quantity = :newQuantity WHERE name = :productName")
     suspend fun updateProductQuantity(productName: String, newQuantity: Int)
+
+    @Delete
+    suspend fun deleteProduct(productResponseItemDb: ProductResponseItemDb)
 }

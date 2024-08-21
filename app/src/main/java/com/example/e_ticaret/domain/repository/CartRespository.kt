@@ -11,4 +11,7 @@ interface CartRepository {
     suspend fun updateProductQuantity(productName: String, newQuantity: Int)
 
     suspend fun getProductByName(productName: String): ProductResponseItemDb?
+
+    suspend fun deleteProduct(productResponseItemDb: ProductResponseItemDb)
+
 }

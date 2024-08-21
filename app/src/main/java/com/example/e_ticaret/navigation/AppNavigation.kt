@@ -2,6 +2,7 @@ package com.example.e_ticaret.navigation
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -21,7 +22,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
 import com.example.e_ticaret.R
 import com.example.e_ticaret.presentation.product_screen.ProductScreen
 import com.example.e_ticaret.presentation.shopping_cart_screen.ShoppingCartScreen
@@ -59,7 +59,7 @@ fun AppBottomNav(navController: NavController) {
         val currentRoute = navBackStackEntry?.destination?.route
 
         NavigationBar(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().height(53.dp),
             containerColor = Color.White
         ) {
             items.forEach { item ->

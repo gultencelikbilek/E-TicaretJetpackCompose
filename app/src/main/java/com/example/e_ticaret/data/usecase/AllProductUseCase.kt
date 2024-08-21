@@ -1,11 +1,11 @@
 package com.example.e_ticaret.data.usecase
 
-import com.example.e_ticaret.data.di.ProductRepositoryImpl
 import com.example.e_ticaret.data.network.NetworkResult
 import com.example.e_ticaret.domain.model.ProductResponseItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
+import com.example.e_ticaret.data.di.ProductRepositoryImpl
 
 class AllProductUseCase @Inject constructor(private val repositoryImpl: ProductRepositoryImpl) {
 

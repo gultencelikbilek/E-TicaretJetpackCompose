@@ -1,6 +1,7 @@
 package com.example.e_ticaret.data.di
 
 import android.content.Context
+import android.util.Log
 import com.example.e_ticaret.data.db.CartDao
 import com.example.e_ticaret.domain.model.ProductResponseItemDb
 import com.example.e_ticaret.domain.repository.CartRepository
@@ -38,5 +39,9 @@ class CartRepositoryImpl @Inject constructor(
 
     override suspend fun getProductByName(productName: String): ProductResponseItemDb? {
         return cartDao.getProductByName(productName)
+    }
+
+    override suspend fun deleteProduct(productResponseItemDb: ProductResponseItemDb) {
+        cartDao.deleteProduct(productResponseItemDb)
     }
 }

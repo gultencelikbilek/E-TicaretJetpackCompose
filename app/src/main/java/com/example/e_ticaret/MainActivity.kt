@@ -61,17 +61,19 @@ class MainActivity : ComponentActivity() {
                 ETicaretTheme {
                     val navController = rememberNavController()
                     Scaffold(
-                        bottomBar = {
+                        bottomBar= {
                             AppBottomNav(navController = navController)
+                        },
+                        modifier = Modifier.fillMaxSize(),
+                        content = {padding ->
+                            Box(
+                                modifier = Modifier.fillMaxSize().padding(padding),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                AppNavigation(navController)
+                            }
                         }
-                    ) {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            AppNavigation(navController)
-                        }
-                    }
+                    )
 
                 }
             }
