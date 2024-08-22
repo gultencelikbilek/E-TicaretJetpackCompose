@@ -1,8 +1,6 @@
 package com.example.e_ticaret.presentation.shopping_cart_screen
 
-import android.util.Log
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.e_ticaret.data.usecase.AllProductCartListUseCase
@@ -12,6 +10,7 @@ import com.example.e_ticaret.data.usecase.UpdateProductQuantityUseCase
 import com.example.e_ticaret.domain.model.ProductResponseItemDb
 import com.example.e_ticaret.domain.repository.CartRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -82,21 +81,15 @@ class ShoppingCartViewModel @Inject constructor(
         }
     }
 
+    fun deleteProduct(product: ProductResponseItemDb){
+        viewModelScope.launch(Dispatchers.IO) {
+            deleteProductUseCase.invoke(product)
 
-
-    fun deleteProduct(productResponseItemDb: ProductResponseItemDb) {
-        viewModelScope.launch {
-            try {
-                deleteProductUseCase(productResponseItemDb)
-                loadProducts()
-                // UI güncelleme işlemleri
-                Log.d("CartViewModel", "Product deleted successfully")
-            } catch (e: Exception) {
-                // Hata yönetimi
-                Log.e("CartViewModel", "Error deleting product: ${e.message}")
-            }
         }
     }
+
+
+
 }
 
 data class CartState(

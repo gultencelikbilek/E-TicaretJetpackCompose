@@ -6,7 +6,7 @@ import com.example.e_ticaret.domain.model.ProductResponseItemDb
 import javax.inject.Inject
 
 class DeleteProductUseCase @Inject constructor(private val repository: CartRepositoryImpl) {
-    suspend operator fun invoke(productResponseItemDb: ProductResponseItemDb) {
+     operator fun invoke(productResponseItemDb: ProductResponseItemDb) {
         repository.deleteProduct(productResponseItemDb)
     }
 }

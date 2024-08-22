@@ -41,7 +41,13 @@ class CartRepositoryImpl @Inject constructor(
         return cartDao.getProductByName(productName)
     }
 
-    override suspend fun deleteProduct(productResponseItemDb: ProductResponseItemDb) {
-        cartDao.deleteProduct(productResponseItemDb)
+    override  fun deleteProduct(productResponseItemDb: ProductResponseItemDb) {
+        try {
+            val rowsDeleted = AppModule.prodivesRoomDatabase(context).cartDao.deleteProduct(productResponseItemDb)
+            Log.d("DeleteProduct", "Rows deleted: $rowsDeleted")
+        } catch (e: Exception) {
+            Log.e("DeleteProductError", "Error deleting product: ${e.message}")
+        }
     }
+
 }

@@ -23,5 +23,5 @@ interface CartDao {
     suspend fun updateProductQuantity(productName: String, newQuantity: Int)
 
     @Delete
-    suspend fun deleteProduct(productResponseItemDb: ProductResponseItemDb)
+     fun deleteProduct(productResponseItemDb: ProductResponseItemDb)
 }

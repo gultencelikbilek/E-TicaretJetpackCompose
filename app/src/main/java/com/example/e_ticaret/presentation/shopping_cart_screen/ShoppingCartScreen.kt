@@ -19,8 +19,6 @@ fun ShoppingCartScreen(
 ) {
     val state by cartViewModel.cartResponse.collectAsState()
 
-
-
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         content = {padding ->
@@ -31,13 +29,13 @@ fun ShoppingCartScreen(
             ) {
                 items(
                     state.data ?: emptyList(),
-                    // key = { it.id }
+                     key = { it.id }
                 ) { product ->
                     ShoppingCartComponent(
                         product,
                         onIncreaseQuantity = { cartViewModel.increaseProductQuantity(product) },
                         onDecreaseQuantity = { cartViewModel.decreaseProductQuantity(product) },
-                        onDeleteProduct = { cartViewModel.deleteProduct(product) }
+                        onDeleteProduct = {cartViewModel.deleteProduct(product)}
                     )
                 }
             }

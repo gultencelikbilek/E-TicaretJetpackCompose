@@ -1,6 +1,7 @@
 package com.example.e_ticaret.presentation.component
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
@@ -36,7 +38,10 @@ import coil.compose.AsyncImage
 import coil.compose.rememberImagePainter
 import com.example.e_ticaret.R
 import com.example.e_ticaret.domain.model.ProductResponseItemDb
-import com.example.e_ticaret.presentation.shopping_cart_screen.ShoppingCartViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
 @Composable
@@ -46,12 +51,15 @@ fun ShoppingCartComponent(
     onDecreaseQuantity: (ProductResponseItemDb) -> Unit,
     onDeleteProduct: (ProductResponseItemDb) -> Unit
 ) {
+    val context = LocalContext.current
     // Ürün kaydırıldığında silinmesini sağlayan bir durum objesi oluşturuyoruz.
     val dismissState = rememberDismissState(
         confirmStateChange = {
             // Ürün sadece sağa kaydırıldığında (DismissedToEnd)
             if (it == DismissValue.DismissedToEnd) {
-                onDeleteProduct(productResponseItemDb) // Ürün silme fonksiyonunu çağır
+                CoroutineScope(Dispatchers.IO).launch {
+                        onDeleteProduct(productResponseItemDb)
+                }
             }
            true
         }
